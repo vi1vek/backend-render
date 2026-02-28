@@ -8,5 +8,5 @@ route.get("/second",second)
 route.get("/third",third)
 route.post("/post",Register)
 route.get("/",GetAll)
-userRoute.put("/edit/:id",Edit)
+route.put("/edit/:id",Edit)
 export default route
