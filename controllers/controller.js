@@ -43,3 +43,16 @@ export const GetAll = async(req,res)=>{
         return res.json({message: error.message})
     }
 }
+
+export const Edit = async(req,res)=>{
+    const uid = req.params.id
+    try{
+        // const{name,details}=req.body;
+        const nuser = await User.findByIdAndUpdate(uid,req.body,{new:true});
+        
+        await nuser.save();
+        return res.json({message: "Updated Successfully"})
+    }catch(error){
+        return res.json({message: error.message})
+    }
+}
