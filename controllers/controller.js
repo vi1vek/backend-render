@@ -1,7 +1,7 @@
 
 
 export const first = (req,res)=>{
-    res.send("This is First Page.")
+    return res.status(200).json({message:"From Backend. This is First Page."})
 }
 
 export const second = (req,res)=>{
