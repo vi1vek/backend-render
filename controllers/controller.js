@@ -13,9 +13,17 @@ export const third = (req,res)=>{
     res.send("This is third Page.")
 }
 
+
 export const Register = async(req,res)=>{
     try{
         const{name,email}=req.body;
+        const image = req.file;
+        if(!image){
+            return res.status(400).json({
+                message: "file not found."
+            })
+        }
+
         if(!name || !email){
             return res.status(400).json({success:false,message:"All fields required"})
         }
@@ -25,7 +33,7 @@ export const Register = async(req,res)=>{
         // }
         // const hashPass = await bcrypt.hash(password,10)
         // const verficationCode = Math.floor(100000 + Math.random() * 900000).toString()
-        const newUser= new User({name,email})
+        const newUser= new User({name,email,image:req.file.path})
         await newUser.save();
         // await sendVerificationCode(newUser.email,newUser.verficationCode)
         return res.status(201).json({success:true,message:"User Register successfully"})

@@ -3,6 +3,7 @@ import route from "./routes/route.js";
 import dotenv from "dotenv"
 import cors from 'cors'
 import connectDb from "./config/db.js";
+
 const app=express()
 dotenv.config()
 const PORT = process.env.PORT || 8000
